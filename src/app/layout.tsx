@@ -1,5 +1,8 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import { ThemeProvider } from "next-themes"
+
+import { Navbar } from "@/components/navbar"
 
 import "./globals.css"
 
@@ -16,8 +19,21 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          enableColorScheme
+          storageKey="theme"
+        >
+          <div className="flex min-h-screen flex-col">
+            <Navbar />
+            <main className="flex flex-1 flex-col">{children}</main>
+          </div>
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
