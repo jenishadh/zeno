@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "next-themes"
 
+import { Footer } from "@/components/footer"
 import { Navbar } from "@/components/navbar"
 
 import "./globals.css"
@@ -31,6 +32,7 @@ export default function RootLayout({
           <div className="flex min-h-screen flex-col">
             <Navbar />
             <main className="flex flex-1 flex-col">{children}</main>
+            <Footer />
           </div>
         </ThemeProvider>
       </body>
